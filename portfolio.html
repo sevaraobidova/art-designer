@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Art Designer Portfolio</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Inter -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* Custom styles for smooth scrolling and font */
+      html {
+        scroll-behavior: smooth;
+        font-family: "Inter", sans-serif;
+      }
+      body {
+        background-color: #f8fafc; /* Tailwind slate-50 */
+        color: #1e293b; /* Tailwind slate-800 */
+        overflow-x: hidden; /* Prevent horizontal scroll */
+      }
+      .section {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+      }
+      .section.active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .nav-link.active {
+        @apply text-blue-600 font-semibold;
+      }
+      /* Custom button styles for better aesthetics */
+      .btn-primary {
+        @apply inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-lg shadow-lg text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105;
+      }
+      .btn-secondary {
+        @apply inline-flex items-center justify-center px-6 py-3 border border-blue-600 text-base font-medium rounded-lg shadow-lg text-blue-600 bg-white hover:bg-blue-50 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105;
+      }
+      .card-hover-effect {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .card-hover-effect:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      }
+    </style>
+  </head>
+  <body class="antialiased">
+    <!-- Navigation Bar -->
+    <header class="bg-white shadow-sm fixed w-full z-50 top-0">
+      <nav
+        class="container mx-auto px-4 py-4 flex justify-between items-center"
+      >
+        <a
+          href="#home"
+          class="text-2xl font-bold text-blue-600 rounded-md p-2 hover:bg-blue-50 transition-colors duration-300"
+        >
+          [Your Name]
+        </a>
+        <div class="hidden md:flex space-x-8">
+          <a
+            href="#home"
+            class="nav-link text-gray-700 hover:text-blue-600 transition-colors duration-300 p-2 rounded-md"
+            >Home</a
+          >
+          <a
+            href="#about"
+            class="nav-link text-gray-700 hover:text-blue-600 transition-colors duration-300 p-2 rounded-md"
+            >About</a
+          >
+          <a
+            href="#services"
+            class="nav-link text-gray-700 hover:text-blue-600 transition-colors duration-300 p-2 rounded-md"
+            >Services</a
+          >
+          <a
+            href="#portfolio"
+            class="nav-link text-gray-700 hover:text-blue-600 transition-colors duration-300 p-2 rounded-md"
+            >Portfolio</a
+          >
+          <a
+            href="#contact"
+            class="nav-link text-gray-700 hover:text-blue-600 transition-colors duration-300 p-2 rounded-md"
+            >Contact</a
+          >
+        </div>
+        <!-- Mobile Menu Button -->
+        <button
+          id="mobile-menu-button"
+          class="md:hidden text-gray-700 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-md p-2"
+        >
+          <svg
+            class="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"
+            ></path>
+          </svg>
+        </button>
+      </nav>
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="hidden md:hidden bg-white shadow-md py-2">
+        <a
+          href="#home"
+          class="nav-link block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-300"
+          >Home</a
+        >
+        <a
+          href="#about"
+          class="nav-link block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-300"
+          >About</a
+        >
+        <a
+          href="#services"
+          class="nav-link block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-300"
+          >Services</a
+        >
+        <a
+          href="#portfolio"
+          class="nav-link block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-300"
+          >Portfolio</a
+        >
+        <a
+          href="#contact"
+          class="nav-link block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-300"
+          >Contact</a
+        >
+      </div>
+    </header>
+
+    <main class="pt-16">
+      <!-- Padding to account for fixed header -->
+
+      <!-- Home Section -->
+      <section
+        id="home"
+        class="section active min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-50 to-indigo-50 py-20 px-4"
+      >
+        <div class="container mx-auto text-center">
+          <h1
+            class="text-5xl md:text-7xl font-extrabold text-gray-900 leading-tight mb-6 animate-fade-in-down"
+          >
+            Hi, I'm <span class="text-blue-600">Your Name</span>
+          </h1>
+          <p
+            class="text-xl md:text-2xl text-gray-600 mb-10 max-w-3xl mx-auto animate-fade-in-up"
+          >
+            A passionate Art Designer creating captivating visuals and unique
+            experiences.
+          </p>
+          <div
+            class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4 animate-fade-in-up"
+          >
+            <a href="#portfolio" class="btn-primary flex">
+              View My Work
+              <svg
+                class="ml-2 -mr-1 w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 5l7 7-7 7"
+                ></path>
+              </svg>
+            </a>
+            <a href="#contact" class="btn-secondary flex">
+              Get In Touch
+              <svg
+                class="ml-2 -mr-1 w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M17 8l4 4m0 0l-4 4m4-4H3"
+                ></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- About Section -->
+      <section id="about" class="section bg-white py-20 px-4">
+        <div
+          class="container mx-auto flex flex-col md:flex-row items-center md:space-x-12"
+        >
+          <div class="md:w-1/3 mb-8 md:mb-0">
+            <img
+              src="https://placehold.co/400x400/e0e7ff/4338ca?text=Your+Photo"
+              alt="Your Photo"
+              class="w-full h-auto rounded-full shadow-xl object-cover border-4 border-blue-200 animate-fade-in-left"
+            />
+          </div>
+          <div class="md:w-2/3 text-center md:text-left animate-fade-in-right">
+            <h2 class="text-4xl font-bold text-gray-900 mb-6">About Me</h2>
+            <p class="text-lg text-gray-700 leading-relaxed mb-6">
+              Hello! I'm [Your Name], an art designer with a passion for
+              creating visually stunning and impactful designs. With [X years]
+              of experience in the industry, I specialize in [mention 2-3 key
+              areas, e.g., graphic design, digital illustration, branding]. My
+              goal is to bring ideas to life through thoughtful design and
+              creative solutions.
+            </p>
+            <p class="text-lg text-gray-700 leading-relaxed">
+              I believe in the power of design to communicate, inspire, and
+              connect. Whether it's crafting a compelling brand identity,
+              illustrating a captivating story, or designing an intuitive user
+              interface, I approach every project with dedication and a keen eye
+              for detail. Let's create something amazing together!
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Services Section -->
+      <section id="services" class="section bg-gray-50 py-20 px-4">
+        <div class="container mx-auto text-center">
+          <h2 class="text-4xl font-bold text-gray-900 mb-12">My Services</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Service Card 1 -->
+            <div
+              class="bg-white p-8 rounded-xl shadow-lg card-hover-effect animate-fade-in-up"
+            >
+              <div class="text-blue-600 mb-4">
+                <svg
+                  class="mx-auto h-12 w-12"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9.663 17h4.673M12 3v14m-7 0h14a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2z"
+                  ></path>
+                </svg>
+              </div>
+              <h3 class="text-2xl font-semibold text-gray-900 mb-4">
+                Graphic Design
+              </h3>
+              <p class="text-gray-600">
+                From logos and branding to marketing materials and print design,
+                I create visually striking graphics that resonate with your
+                audience.
+              </p>
+            </div>
+            <!-- Service Card 2 -->
+            <div
+              class="bg-white p-8 rounded-xl shadow-lg card-hover-effect animate-fade-in-up delay-100"
+            >
+              <div class="text-blue-600 mb-4">
+                <svg
+                  class="mx-auto h-12 w-12"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
+                  ></path>
+                </svg>
+              </div>
+              <h3 class="text-2xl font-semibold text-gray-900 mb-4">
+                Web Design & UI/UX
+              </h3>
+              <p class="text-gray-600">
+                Designing intuitive and aesthetically pleasing websites and user
+                interfaces that enhance user experience and engagement.
+              </p>
+            </div>
+            <!-- Service Card 3 -->
+            <div
+              class="bg-white p-8 rounded-xl shadow-lg card-hover-effect animate-fade-in-up delay-200"
+            >
+              <div class="text-blue-600 mb-4">
+                <svg
+                  class="mx-auto h-12 w-12"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                  ></path>
+                </svg>
+              </div>
+              <h3 class="text-2xl font-semibold text-gray-900 mb-4">
+                Illustration
+              </h3>
+              <p class="text-gray-600">
+                Custom illustrations for books, digital media, and more,
+                bringing unique characters and scenes to life with vibrant
+                artistry.
+              </p>
+            </div>
+            <!-- Service Card 4 -->
+            <div
+              class="bg-white p-8 rounded-xl shadow-lg card-hover-effect animate-fade-in-up delay-300"
+            >
+              <div class="text-blue-600 mb-4">
+                <svg
+                  class="mx-auto h-12 w-12"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z"
+                  ></path>
+                </svg>
+              </div>
+              <h3 class="text-2xl font-semibold text-gray-900 mb-4">
+                Brand Identity
+              </h3>
+              <p class="text-gray-600">
+                Developing comprehensive brand identities, including logo
+                design, color palettes, typography, and brand guidelines.
+              </p>
+            </div>
+            <!-- Service Card 5 -->
+            <div
+              class="bg-white p-8 rounded-xl shadow-lg card-hover-effect animate-fade-in-up delay-400"
+            >
+              <div class="text-blue-600 mb-4">
+                <svg
+                  class="mx-auto h-12 w-12"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m7 0V5a2 2 0 012-2h2a2 2 0 012 2v10M9 7h1m-1 4h1m4-4h1m-1 4h1"
+                  ></path>
+                </svg>
+              </div>
+              <h3 class="text-2xl font-semibold text-gray-900 mb-4">
+                Print Design
+              </h3>
+              <p class="text-gray-600">
+                Crafting stunning print materials such as brochures, flyers,
+                posters, and packaging designs that stand out.
+              </p>
+            </div>
+            <!-- Service Card 6 -->
+            <div
+              class="bg-white p-8 rounded-xl shadow-lg card-hover-effect animate-fade-in-up delay-500"
+            >
+              <div class="text-blue-600 mb-4">
+                <svg
+                  class="mx-auto h-12 w-12"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"
+                  ></path>
+                </svg>
+              </div>
+              <h3 class="text-2xl font-semibold text-gray-900 mb-4">
+                Motion Graphics
+              </h3>
+              <p class="text-gray-600">
+                Bringing designs to life with dynamic motion graphics for
+                videos, presentations, and digital campaigns.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Portfolio Section -->
+      <section id="portfolio" class="section bg-white py-20 px-4">
+        <div class="container mx-auto text-center">
+          <h2 class="text-4xl font-bold text-gray-900 mb-12">My Portfolio</h2>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Portfolio Item 1 -->
+            <div
+              class="relative group rounded-xl overflow-hidden shadow-lg card-hover-effect animate-fade-in-up"
+            >
+              <img
+                src="https://placehold.co/600x400/a78bfa/ffffff?text=Project+1"
+                alt="Project 1"
+                class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105"
+              />
+              <div
+                class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              >
+                <h3 class="text-white text-2xl font-bold">
+                  Brand Identity Design
+                </h3>
+              </div>
+            </div>
+            <!-- Portfolio Item 2 -->
+            <div
+              class="relative group rounded-xl overflow-hidden shadow-lg card-hover-effect animate-fade-in-up delay-100"
+            >
+              <img
+                src="https://placehold.co/600x400/818cf8/ffffff?text=Project+2"
+                alt="Project 2"
+                class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105"
+              />
+              <div
+                class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              >
+                <h3 class="text-white text-2xl font-bold">
+                  Web UI/UX Redesign
+                </h3>
+              </div>
+            </div>
+            <!-- Portfolio Item 3 -->
+            <div
+              class="relative group rounded-xl overflow-hidden shadow-lg card-hover-effect animate-fade-in-up delay-200"
+            >
+              <img
+                src="https://placehold.co/600x400/6366f1/ffffff?text=Project+3"
+                alt="Project 3"
+                class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105"
+              />
+              <div
+                class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              >
+                <h3 class="text-white text-2xl font-bold">
+                  Digital Illustration Series
+                </h3>
+              </div>
+            </div>
+            <!-- Portfolio Item 4 -->
+            <div
+              class="relative group rounded-xl overflow-hidden shadow-lg card-hover-effect animate-fade-in-up delay-300"
+            >
+              <img
+                src="https://placehold.co/600x400/4f46e5/ffffff?text=Project+4"
+                alt="Project 4"
+                class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105"
+              />
+              <div
+                class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              >
+                <h3 class="text-white text-2xl font-bold">Magazine Layout</h3>
+              </div>
+            </div>
+            <!-- Portfolio Item 5 -->
+            <div
+              class="relative group rounded-xl overflow-hidden shadow-lg card-hover-effect animate-fade-in-up delay-400"
+            >
+              <img
+                src="https://placehold.co/600x400/4338ca/ffffff?text=Project+5"
+                alt="Project 5"
+                class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105"
+              />
+              <div
+                class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              >
+                <h3 class="text-white text-2xl font-bold">Packaging Design</h3>
+              </div>
+            </div>
+            <!-- Portfolio Item 6 -->
+            <div
+              class="relative group rounded-xl overflow-hidden shadow-lg card-hover-effect animate-fade-in-up delay-500"
+            >
+              <img
+                src="https://placehold.co/600x400/3730a3/ffffff?text=Project+6"
+                alt="Project 6"
+                class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105"
+              />
+              <div
+                class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              >
+                <h3 class="text-white text-2xl font-bold">
+                  Motion Graphics Intro
+                </h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact Section -->
+      <section id="contact" class="section bg-gray-50 py-20 px-4">
+        <div class="container mx-auto text-center">
+          <h2 class="text-4xl font-bold text-gray-900 mb-12">Get In Touch</h2>
+          <div
+            class="max-w-2xl mx-auto bg-white p-8 rounded-xl shadow-lg animate-fade-in-up"
+          >
+            <p class="text-lg text-gray-700 mb-6">
+              Have a project in mind or just want to say hello? Feel free to
+              reach out!
+            </p>
+            <form class="space-y-6">
+              <div>
+                <label for="name" class="sr-only">Name</label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  placeholder="Your Name"
+                  class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 transition-all duration-200"
+                />
+              </div>
+              <div>
+                <label for="email" class="sr-only">Email</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="Your Email"
+                  class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 transition-all duration-200"
+                />
+              </div>
+              <div>
+                <label for="message" class="sr-only">Message</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="6"
+                  placeholder="Your Message"
+                  class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 transition-all duration-200"
+                ></textarea>
+              </div>
+              <button type="submit" class="btn-primary w-full">
+                Send Message
+                <svg
+                  class="ml-2 -mr-1 w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M13 10V3L4 14h7v7l9-11h-7z"
+                  ></path>
+                </svg>
+              </button>
+            </form>
+            <div class="mt-8 text-gray-600">
+              <p class="mb-2">
+                <strong class="text-gray-800">Email:</strong>
+                <a
+                  href="mailto:your.email@example.com"
+                  class="text-blue-600 hover:underline"
+                  >your.email@example.com</a
+                >
+              </p>
+              <p class="mb-2">
+                <strong class="text-gray-800">Phone:</strong>
+                <a href="tel:+1234567890" class="text-blue-600 hover:underline"
+                  >+1 (234) 567-890</a
+                >
+              </p>
+              <div class="flex justify-center space-x-6 mt-4">
+                <a
+                  href="#"
+                  target="_blank"
+                  class="text-gray-500 hover:text-blue-600 transition-colors duration-300"
+                >
+                  <svg
+                    class="h-8 w-8"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                </a>
+                <a
+                  href="#"
+                  target="_blank"
+                  class="text-gray-500 hover:text-blue-600 transition-colors duration-300"
+                >
+                  <svg
+                    class="h-8 w-8"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M12.27 2.11C6.67 2.11 2 6.78 2 12.44c0 5.07 3.68 9.3 8.52 10.08.62.11.85-.27.85-.6V19.4c-3.37.73-4.08-1.62-4.08-1.62-.55-1.4-1.34-1.78-1.34-1.78-1.1-.75.08-.73.08-.73 1.2.08 1.83 1.24 1.83 1.24 1.07 1.83 2.8 1.3 3.49.99.11-.77.42-1.3.76-1.6C7.57 16.1 4.73 15 4.73 10.22c0-1.3.47-2.37 1.24-3.2-.12-.3-.54-1.52.12-3.16 0 0 1-.32 3.3 1.22.95-.26 1.95-.39 2.95-.39.99 0 1.99.13 2.95.39 2.29-1.54 3.29-1.22 3.29-1.22.66 1.64.24 2.86.12 3.16.77.83 1.24 1.9 1.24 3.2 0 4.78-2.84 5.88-5.59 6.18.43.37.81 1.1.81 2.22v3.29c0 .33.23.71.85.6C18.32 21.74 22 17.41 22 12.44 22 6.78 17.33 2.11 12.27 2.11z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                </a>
+                <a
+                  href="#"
+                  target="_blank"
+                  class="text-gray-500 hover:text-blue-600 transition-colors duration-300"
+                >
+                  <svg
+                    class="h-8 w-8"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M8.29 20.251c-1.413 0-2.56-.994-2.56-2.22v-6.936c0-1.226 1.147-2.22 2.56-2.22h7.42c1.413 0 2.56.994 2.56 2.22v6.936c0 1.226-1.147 2.22-2.56 2.22H8.29zM12 15.5c-1.933 0-3.5-1.567-3.5-3.5S10.067 8.5 12 8.5s3.5 1.567 3.5 3.5-1.567 3.5-3.5 3.5zm4.8-7.5h-1.6c-.66 0-1.2.54-1.2 1.2v1.6c0 .66.54 1.2 1.2 1.2h1.6c.66 0 1.2-.54 1.2-1.2V9.2c0-.66-.54-1.2-1.2-1.2zM12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm0 18c-4.418 0-8-3.582-8-8s3.582-8 8-8 8 3.582 8 8-3.582 8-8 8z"
+                    />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8 px-4">
+      <div class="container mx-auto text-center text-gray-400">
+        <p>&copy; 2025 Your Name. All rights reserved.</p>
+        <p class="mt-2">
+          Designed with <span class="text-red-500">&hearts;</span> by You
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      // JavaScript for smooth scrolling, active navigation, and section animations
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const navLinks = document.querySelectorAll(".nav-link");
+        const sections = document.querySelectorAll(".section");
+        const mobileMenuButton = document.getElementById("mobile-menu-button");
+        const mobileMenu = document.getElementById("mobile-menu");
+
+        // Toggle mobile menu visibility
+        mobileMenuButton.addEventListener("click", () => {
+          mobileMenu.classList.toggle("hidden");
+        });
+
+        // Function to update active navigation link and section visibility
+        const updateActiveSection = () => {
+          let currentActiveSectionId = "home";
+          sections.forEach((section) => {
+            const sectionTop =
+              section.offsetTop - document.querySelector("header").offsetHeight; // Adjust for fixed header
+            const sectionBottom = sectionTop + section.offsetHeight;
+
+            if (
+              window.scrollY >= sectionTop &&
+              window.scrollY < sectionBottom
+            ) {
+              currentActiveSectionId = section.id;
+              section.classList.add("active"); // Add active class for animation
+            } else {
+              section.classList.remove("active"); // Remove active class
+            }
+          });
+
+          navLinks.forEach((link) => {
+            link.classList.remove("active");
+            if (
+              link.getAttribute("href").substring(1) === currentActiveSectionId
+            ) {
+              link.classList.add("active");
+            }
+          });
+        };
+
+        // Event listener for scroll to update active section
+        window.addEventListener("scroll", updateActiveSection);
+
+        // Event listener for navigation clicks (smooth scroll)
+        navLinks.forEach((link) => {
+          link.addEventListener("click", (e) => {
+            e.preventDefault();
+            const targetId = link.getAttribute("href").substring(1);
+            const targetSection = document.getElementById(targetId);
+            const headerOffset = document.querySelector("header").offsetHeight;
+            const elementPosition =
+              targetSection.getBoundingClientRect().top + window.scrollY;
+            const offsetPosition = elementPosition - headerOffset;
+
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: "smooth",
+            });
+
+            // Close mobile menu after clicking a link
+            if (!mobileMenu.classList.contains("hidden")) {
+              mobileMenu.classList.add("hidden");
+            }
+          });
+        });
+
+        // Initial call to set active section on page load
+        updateActiveSection();
+      });
+    </script>
+  </body>
+</html>
